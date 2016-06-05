@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="YourTable">
+          <Key>
+            <PropertyRef Name="RowKey" />
+          </Key>
+          <Property Name="RowKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Guid1" Type="uniqueidentifier" />
+          <Property Name="Guid2" Type="uniqueidentifier" />
+          <Property Name="String1" Type="varchar" MaxLength="255" />
+          <Property Name="String2" Type="varchar" MaxLength="255" />
+          <Property Name="Int1" Type="int" />
+          <Property Name="Int2" Type="int" />
+        </EntityType>
+        <EntityContainer Name="testDBModelStoreContainer">
+          <EntitySet Name="YourTable" EntityType="Self.YourTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="YourTable">
+          <Key>
+            <PropertyRef Name="RowKey" />
+          </Key>
+          <Property Name="RowKey" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guid1" Type="Guid" />
+          <Property Name="Guid2" Type="Guid" />
+          <Property Name="String1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="String2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Int1" Type="Int32" />
+          <Property Name="Int2" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="testDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="YourTables" EntityType="Self.YourTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testDBModelStoreContainer" CdmEntityContainer="testDBEntities">
+          <EntitySetMapping Name="YourTables">
+            <EntityTypeMapping TypeName="testDBModel.YourTable">
+              <MappingFragment StoreEntitySet="YourTable">
+                <ScalarProperty Name="RowKey" ColumnName="RowKey" />
+                <ScalarProperty Name="Guid1" ColumnName="Guid1" />
+                <ScalarProperty Name="Guid2" ColumnName="Guid2" />
+                <ScalarProperty Name="String1" ColumnName="String1" />
+                <ScalarProperty Name="String2" ColumnName="String2" />
+                <ScalarProperty Name="Int1" ColumnName="Int1" />
+                <ScalarProperty Name="Int2" ColumnName="Int2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
